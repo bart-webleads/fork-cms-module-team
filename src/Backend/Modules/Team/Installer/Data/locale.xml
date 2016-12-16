@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<locale>
+  <Backend>
+    <Team>
+      <item type="label" name="AddImages">
+        <translation language="en"><![CDATA[add images]]></translation>
+        <translation language="nl"><![CDATA[voeg afbeeldingen toe]]></translation>
+      </item>
+      <item type="message" name="ConfirmDeleteItem">
+        <translation language="en"><![CDATA[Are your sure you want to delete this?]]></translation>
+        <translation language="nl"><![CDATA[Ben je zeker dat je het item wil verwijderen? ]]></translation>
+
+      </item>
+
+      <item type="label" name="AddTeamMember">
+        <translation language="en"><![CDATA[add team member]]></translation>
+        <translation language="nl"><![CDATA[voeg team member toe]]></translation>
+      </item>
+
+      <item type="label" name="FirstName">
+        <translation language="en"><![CDATA[voornaam]]></translation>
+        <translation language="nl"><![CDATA[first name]]></translation>
+      </item>
+
+      <item type="label" name="Function">
+        <translation language="en"><![CDATA[functie]]></translation>
+        <translation language="nl"><![CDATA[function]]></translation>
+      </item>
+
+
+    <item type="label" name="LastName">
+      <translation language="en"><![CDATA[achternaam]]></translation>
+      <translation language="nl"><![CDATA[last name]]></translation>
+    </item>
+
+    <item type="label" name="LinkedinUrl">
+      <translation language="en"><![CDATA[linkedin url]]></translation>
+      <translation language="nl"><![CDATA[linkedin url]]></translation>
+    </item>
+
+    <item type="label" name="InstagramSiteName">
+      <translation language="en"><![CDATA[instagram site naam]]></translation>
+      <translation language="nl"><![CDATA[instagram site name]]></translation>
+    </item>
+
+    <item type="label" name="TwitterSiteName">
+      <translation language="en"><![CDATA[twitter site naam]]></translation>
+      <translation language="nl"><![CDATA[twitter site name]]></translation>
+    </item>
+
+    <item type="label" name="FacebookSiteName">
+      <translation language="en"><![CDATA[facebook site naam]]></translation>
+      <translation language="nl"><![CDATA[facebook site name]]></translation>
+    </item>
+
+    <item type="label" name="PinterestSiteName">
+      <translation language="en"><![CDATA[pinterest site naam]]></translation>
+      <translation language="nl"><![CDATA[pinterest site name]]></translation>
+    </item>
+
+      <item type="label" name="ParentCategory">
+        <translation language="en"><![CDATA[parent category]]></translation>
+        <translation language="nl"><![CDATA[ouder categorie]]></translation>
+      </item>
+      <item type="label" name="TeamMemberDetail">
+        <translation language="en"><![CDATA[team member detail]]></translation>
+        <translation language="nl"><![CDATA[team member detail]]></translation>
+      </item>
+      <item type="label" name="Team">
+        <translation language="en"><![CDATA[team]]></translation>
+        <translation language="nl"><![CDATA[team]]></translation>
+      </item>
+      <item type="label" name="PublishedTeamMembers">
+        <translation language="en"><![CDATA[published team members]]></translation>
+        <translation language="nl"><![CDATA[gepubliceerde team leden]]></translation>
+      </item>
+      <item type="label" name="SelectImages">
+        <translation language="en"><![CDATA[select images]]></translation>
+        <translation language="nl"><![CDATA[selecteer afbeeldingen]]></translation>
+      </item>
+      <item type="label" name="ShowSubcategories">
+        <translation language="en"><![CDATA[show subcategories]]></translation>
+        <translation language="nl"><![CDATA[ton subcategorieen]]></translation>
+      </item>
+      <item type="label" name="Upload">
+        <translation language="en"><![CDATA[upload]]></translation>
+        <translation language="nl"><![CDATA[upload]]></translation>
+      </item>
+      <item type="label" name="Select">
+        <translation language="en"><![CDATA[select]]></translation>
+        <translation language="nl"><![CDATA[selecteer]]></translation>
+      </item>
+      <item type="label" name="Social">
+        <translation language="en"><![CDATA[social]]></translation>
+        <translation language="nl"><![CDATA[sociaal]]></translation>
+      </item>
+
+      <item type="message" name="YouCanAddImagesAfterSaving">
+        <translation language="en"><![CDATA[After saving you can add images.]]></translation>
+        <translation language="nl"><![CDATA[Na het opslagen kan je afbeeldingen toevoegen.]]></translation>
+      </item>
+      <item type="message" name="AllowSubcategories">
+        <translation language="en"><![CDATA[Allow subcategories.]]></translation>
+        <translation language="nl"><![CDATA[Sta subcategorieen toe.]]></translation>
+      </item>
+      <item type="message" name="UseImageAsOgImage">
+        <translation language="en"><![CDATA[Use the cover image as og:image]]></translation>
+        <translation language="nl"><![CDATA[Gebruik de cover afbeelding als og:image]]></translation>
+      </item>
+      <item type="message" name="MakeWidgetPerTeamMember">
+        <translation language="en"><![CDATA[Create widget per team member.]]></translation>
+        <translation language="nl"><![CDATA[Maak een widget aan per team member.]]></translation>
+      </item>
+      <item type="message" name="MakeWidgetPerCategory">
+        <translation language="en"><![CDATA[Create widget per category.]]></translation>
+        <translation language="nl"><![CDATA[Maak een widget aan per categorie.]]></translation>
+      </item>
+    </Team>
+    <Core>
+      <item type="label" name="Team">
+        <translation language="nl"><![CDATA[team]]></translation>
+        <translation language="en"><![CDATA[team]]></translation>
+      </item>
+      <item type="label" name="TeamMemberDetail">
+        <translation language="nl"><![CDATA[team lid detail]]></translation>
+        <translation language="en"><![CDATA[team member detail]]></translation>
+      </item>
+
+    </Core>
+  </Backend>
+</locale>

@@ -1,0 +1,12 @@
+{% if widgetTeamCategoriesNavigation %}
+	<ul>
+		<li>
+			<a href="{$var|geturlforblock:'Team'}">Work</a>
+		</li>
+		{% for item in widgetTeamCategoriesNavigation %}
+			<li>
+				<a href="{{ item.full_url }}" title="{{ item.name }}">{{ item.name }}</a>
+			</li>
+		{% endfor %}
+	</ul>
+{% endif %}

@@ -1,0 +1,85 @@
+<div class="team_member-category">
+	<div class="team_member-category-intro">
+		{$item.intro}
+	</div>
+
+	<div class="overview-filter">
+		{form:teamIndexForm}
+
+			<label for="resetFilter" class="reset {option:!searched}checked{/option:!searched}">
+				{$chkResetFilter}
+				<span>{$lblAll|ucfirst}</span>
+			</label>
+			
+			{iteration:categories}
+				<label for="{$categories.id}">
+					{$categories.chkCategories}
+					<span>{$categories.label}</span>
+				</label>
+			{/iteration:categories}
+
+		{/form:teamIndexForm}
+	</div>
+
+	{option:items}
+		<div class="team-grid">
+			{iteration:items}
+			<div class="team-grid-item-outer team-grid-size-{$items.size}">
+				<div class="team-grid-item " style="background-image:url({$FRONTEND_FILES_URL}/Team/image/800x/{$items.image})">
+					<a href="{$items.full_url}" title="{$items.name}">
+						<div class="inner">
+							<div class="inner-text">
+								<h4><span class="line-big">{$items.name}</span></h4>
+								{option:items.sub}
+								<p>{$items.sub}</p>
+								{/option:items.sub}
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<div class="mobile-title">
+					<h5>
+						<a href="{$items.full_url}" title="{$items.name}">
+							{$items.name}
+						</a>
+					</h5>
+				</div>
+
+			</div>
+			{/iteration:items}
+		</div>
+	{/option:items}
+</div>
+
+
+{option:widgetTeamCategories}
+	<div class="team-categories link-hover">
+		<div class="grid">
+			{iteration:widgetTeamCategories}
+			<div class="grid-item grid-item portable-one-half desk-one-quarter">
+				<h4><span class="line">{$widgetTeamCategories.name}</span></h4>
+				<div class="js-equal-heights">
+					{$widgetTeamCategories.description}
+				</div>
+				<p>
+					<a href="{$widgetTeamCategories.full_url}" title="{$widgetTeamCategories.name}">{$lblDiscoverMore|ucfirst}</a>
+				</p>
+			</div>
+			{/iteration:widgetTeamCategories}
+
+			<div class="grid-item grid-item portable-one-half desk-one-quarter title-red">
+				<h4><span class="line">{$lblLetsTalkTitle|ucfirst}</span></h4>
+				<div class="js-equal-heights">
+					{$msgLetsTalk}
+				</div>
+				<p>
+					<a href="/{$FRONTEND_LANGUAGE}/contact" title="{$lblContact|ucfirst}">{$lblContact|ucfirst} ></a>
+				</p>
+			</div>
+
+		</div>
+	</div>
+{/option:widgetTeamCategories}
+
+{include:Core/Layout/Templates/Pagination.tpl}
