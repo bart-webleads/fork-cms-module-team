@@ -2,7 +2,6 @@
 
 namespace Frontend\Modules\Team\Widgets;
 
-
 use Frontend\Core\Engine\Base\Widget as FrontendBaseWidget;
 use Frontend\Modules\Team\Engine\Model as FrontendTeamModel;
 use Frontend\Modules\Team\Engine\Categories as FrontendTeamCategoriesModel;

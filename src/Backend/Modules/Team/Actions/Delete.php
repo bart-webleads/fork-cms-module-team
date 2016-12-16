@@ -26,11 +26,11 @@ class Delete extends ActionDelete
             $this->record = (array) BackendTeamModel::get($this->id);
 
             // delete extra_ids
-            foreach($this->record['content'] as $row){
+            foreach ($this->record['content'] as $row) {
                 Model::deleteExtraById($row['extra_id'], true);
             }
             
-            Model::deleteThumbnails(FRONTEND_FILES_PATH . '/' . $this->getModule() . '/image',  $this->record['image']);
+            Model::deleteThumbnails(FRONTEND_FILES_PATH . '/' . $this->getModule() . '/image', $this->record['image']);
 
             BackendTeamModel::delete($this->id);
 
@@ -42,7 +42,8 @@ class Delete extends ActionDelete
             $this->redirect(
                 Model::createURLForAction('Index') . '&report=deleted'
             );
+        } else {
+            $this->redirect(Model::createURLForAction('Index') . '&error=non-existing');
         }
-        else $this->redirect(Model::createURLForAction('Index') . '&error=non-existing');
     }
 }

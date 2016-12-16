@@ -7,6 +7,7 @@ use Frontend\Core\Engine\Model;
 use Frontend\Core\Engine\Navigation;
 use Frontend\Modules\Team\Engine\Model as FrontendTeamModel;
 use Frontend\Modules\Team\Engine\Categories as FrontendTeamCategoriesModel;
+
 /**
  * This is the index-action (default), it will display the overview of Team posts
  *
@@ -66,8 +67,9 @@ class Detail extends Block
      */
     protected function parse()
     {
-        if($this->get('fork.settings')->get('Team', 'use_image_as_og_image') && $this->record['image'])
+        if ($this->get('fork.settings')->get('Team', 'use_image_as_og_image') && $this->record['image']) {
             $this->header->addOpenGraphImage(FRONTEND_FILES_URL . '/Team/image/1200x630/' . $this->record['image']);
+        }
 
         // build Facebook  OpenGraph data
         $this->header->addOpenGraphData('title', $this->record['first_name'], true);
@@ -109,5 +111,4 @@ class Detail extends Block
         $numberOfParameters = count($this->URL->getParameters());
         return $this->URL->getParameter($numberOfParameters - 1);
     }
-
 }

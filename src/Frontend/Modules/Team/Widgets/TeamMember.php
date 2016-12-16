@@ -2,10 +2,8 @@
 
 namespace Frontend\Modules\Team\Widgets;
 
-
 use Frontend\Core\Engine\Base\Widget as FrontendBaseWidget;
 use Frontend\Modules\Team\Engine\Model as FrontendTeamModel;
-
 
 class TeamMember extends FrontendBaseWidget
 {
@@ -24,6 +22,8 @@ class TeamMember extends FrontendBaseWidget
      */
     private function parse()
     {
-        if(isset($this->data['id'])) $this->tpl->assign('widgetTeamTeamMember', FrontendTeamModel::getById($this->data['id']));
+        if (isset($this->data['id'])) {
+            $this->tpl->assign('widgetTeamTeamMember', FrontendTeamModel::getById($this->data['id']));
+        }
     }
 }

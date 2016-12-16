@@ -75,7 +75,7 @@ class Edit extends ActionEdit
         $this->dataGrid->setColumnFunction(array('Backend\Modules\SiteHelpers\Engine\Helper', 'getPreviewHTML'), array('[filename]','Team','images','200x'), 'preview', true);
 
         // make sure the column with the handler is the first one
-        $this->dataGrid->setColumnsSequence('dragAndDropHandle','checkbox','preview','filename','delete');
+        $this->dataGrid->setColumnsSequence('dragAndDropHandle', 'checkbox', 'preview', 'filename', 'delete');
 
         // Hidden
         $this->dataGrid->setColumnsHidden(array('filename','checkbox'));
@@ -153,39 +153,42 @@ class Edit extends ActionEdit
          //$this->frm->addDropdown('categories', $this->categories, $selected, true, 'select select2', 'selectError select2');
 
          $this->categories = BackendTeamCategoryModel::getForMultiCheckbox();
-         if(!empty($this->categories) && Authentication::isAllowedAction('AddCategory')) $this->frm->addMultiCheckbox('categories', $this->categories, $selected );
+        if (!empty($this->categories) && Authentication::isAllowedAction('AddCategory')) {
+            $this->frm->addMultiCheckbox('categories', $this->categories, $selected);
+        }
 
-        foreach($this->languages as &$language)
-        {
-            $field = $this->frm->addText('function_'. $language['abbreviation'], isset($this->record['content'][$language['abbreviation']]['function']) ? $this->record['content'][$language['abbreviation']]['function'] : '', null, 'form-control title', 'form-control danger title');
+        foreach ($this->languages as &$language) {
+            $field = $this->frm->addText('function_' . $language['abbreviation'], isset($this->record['content'][$language['abbreviation']]['function']) ? $this->record['content'][$language['abbreviation']]['function'] : '', null, 'form-control title', 'form-control danger title');
             $language['function_field'] = $field->parse();
 
-            $field = $this->frm->addEditor('description_'. $language['abbreviation'], isset($this->record['content'][$language['abbreviation']]['description']) ? $this->record['content'][$language['abbreviation']]['description'] : '');
+            $field = $this->frm->addEditor('description_' . $language['abbreviation'], isset($this->record['content'][$language['abbreviation']]['description']) ? $this->record['content'][$language['abbreviation']]['description'] : '');
             $language['description_field'] = $field->parse();
 
-            $field = $this->frm->addCheckbox('seo_url_overwrite_'. $language['abbreviation'], $this->record['content'][$language['abbreviation']]['seo_url_overwrite'] == 'Y');
+            $field = $this->frm->addCheckbox('seo_url_overwrite_' . $language['abbreviation'], $this->record['content'][$language['abbreviation']]['seo_url_overwrite'] == 'Y');
             $language['seo_url_overwrite_field'] = $field->parse();
 
-            $field = $this->frm->addCheckbox('seo_description_overwrite_'. $language['abbreviation'], $this->record['content'][$language['abbreviation']]['seo_description_overwrite'] == 'Y');
+            $field = $this->frm->addCheckbox('seo_description_overwrite_' . $language['abbreviation'], $this->record['content'][$language['abbreviation']]['seo_description_overwrite'] == 'Y');
             $language['seo_description_overwrite_field'] = $field->parse();
 
-            $field = $this->frm->addCheckbox('seo_title_overwrite_'. $language['abbreviation'], $this->record['content'][$language['abbreviation']]['seo_title_overwrite'] == 'Y');
+            $field = $this->frm->addCheckbox('seo_title_overwrite_' . $language['abbreviation'], $this->record['content'][$language['abbreviation']]['seo_title_overwrite'] == 'Y');
             $language['seo_title_overwrite_field'] = $field->parse();
 
 
-            $field = $this->frm->addText('url_'. $language['abbreviation'], isset($this->record['content'][$language['abbreviation']]['url']) ? $this->record['content'][$language['abbreviation']]['url'] : '');
+            $field = $this->frm->addText('url_' . $language['abbreviation'], isset($this->record['content'][$language['abbreviation']]['url']) ? $this->record['content'][$language['abbreviation']]['url'] : '');
             $language['url_field'] = $field->parse();
 
-            $field = $this->frm->addText('seo_title_'. $language['abbreviation'], isset($this->record['content'][$language['abbreviation']]['seo_title']) ? $this->record['content'][$language['abbreviation']]['seo_title'] : '');
+            $field = $this->frm->addText('seo_title_' . $language['abbreviation'], isset($this->record['content'][$language['abbreviation']]['seo_title']) ? $this->record['content'][$language['abbreviation']]['seo_title'] : '');
             $language['seo_title_field'] = $field->parse();
 
-            $field = $this->frm->addText('seo_description_'. $language['abbreviation'], isset($this->record['content'][$language['abbreviation']]['seo_description']) ? $this->record['content'][$language['abbreviation']]['seo_description'] : '');
+            $field = $this->frm->addText('seo_description_' . $language['abbreviation'], isset($this->record['content'][$language['abbreviation']]['seo_description']) ? $this->record['content'][$language['abbreviation']]['seo_description'] : '');
             $language['seo_description_field'] = $field->parse();
 
-            $url = Model::getURLForBlock($this->URL->getModule(), 'Detail',  $language['abbreviation']);
-            $url404 = Model::getURL(404,  $language['abbreviation']);
+            $url = Model::getURLForBlock($this->URL->getModule(), 'Detail', $language['abbreviation']);
+            $url404 = Model::getURL(404, $language['abbreviation']);
             $language['slug'] = isset($this->record['content'][$language['abbreviation']]['url']) ? $this->record['content'][$language['abbreviation']]['url'] : '';
-            if($url404 != $url) $language['url'] = SITE_URL . $url;
+            if ($url404 != $url) {
+                $language['url'] = SITE_URL . $url;
+            }
         }
     }
 
@@ -224,17 +227,18 @@ class Edit extends ActionEdit
             $this->frm->getField('first_name')->isFilled(Language::getError('FieldIsRequired'));
             $this->frm->getField('last_name')->isFilled(Language::getError('FieldIsRequired'));
 
-            if($this->frm->getField('linkedin_url')->isFilled()) $this->frm->getField('linkedin_url')->isURL(Language::getError('InvalidURL'));
-            if($this->frm->getField('email')->isFilled()) $this->frm->getField('email')->isEmail(Language::getError('EmailIsInvalid'));
+            if ($this->frm->getField('linkedin_url')->isFilled()) {
+                $this->frm->getField('linkedin_url')->isURL(Language::getError('InvalidURL'));
+            }
+            if ($this->frm->getField('email')->isFilled()) {
+                $this->frm->getField('email')->isEmail(Language::getError('EmailIsInvalid'));
+            }
 
-            foreach($this->languages as $key => $language)
-            {
-
+            foreach ($this->languages as $key => $language) {
             }
 
 
             if ($this->frm->isCorrect()) {
-
                 $item['id'] = $this->id;
                 $item['hidden'] = $fields['hidden']->getValue();
                 $item['publish_on'] = Model::getUTCDate(null, Model::getUTCTimestamp($this->frm->getField('publish_on_date'), $this->frm->getField('publish_on_time')));
@@ -242,7 +246,7 @@ class Edit extends ActionEdit
                 $item['size'] = $fields['size']->getValue();
                 $item['first_name'] = $fields['first_name']->getValue();
                 $item['last_name'] = $fields['last_name']->getValue();
-                $item['full_name'] = $item['first_name'] .  ' ' . $item['last_name'];
+                $item['full_name'] = $item['first_name'] . ' ' . $item['last_name'];
                 $item['twitter_site_name'] = $fields['twitter_site_name']->getValue();
                 $item['instagram_site_name'] = $fields['instagram_site_name']->getValue();
                 $item['pinterest_site_name'] = $fields['pinterest_site_name']->getValue();
@@ -252,8 +256,7 @@ class Edit extends ActionEdit
                 $item['linkedin_url'] = $fields['linkedin_url']->getValue();
 
 
-                if(!empty($this->categories) && Authentication::isAllowedAction('AddCategory'))
-                {
+                if (!empty($this->categories) && Authentication::isAllowedAction('AddCategory')) {
                     SiteHelpersModel::insertLinked(
                         $this->frm->getField('categories')->getValue(),
                         'category_id',
@@ -265,18 +268,17 @@ class Edit extends ActionEdit
 
                 $imagePath = SiteHelpersHelper::generateFolders($this->getModule());
 
-                if($fields['delete_image']->isChecked()){
-                    $item['image'] = NULL;
-                    Model::deleteThumbnails(FRONTEND_FILES_PATH . '/' . $this->getModule() . '/image',  $this->record['image']);
+                if ($fields['delete_image']->isChecked()) {
+                    $item['image'] = null;
+                    Model::deleteThumbnails(FRONTEND_FILES_PATH . '/' . $this->getModule() . '/image', $this->record['image']);
                 }
 
                 // image provided?
                 if ($fields['image']->isFilled()) {
                     // replace old image
-                    if($this->record['image'])
-                    {
-                      $item['image'] = NULL;
-                      Model::deleteThumbnails(FRONTEND_FILES_PATH . '/' . $this->getModule() . '/image',  $this->record['image']);
+                    if ($this->record['image']) {
+                        $item['image'] = null;
+                        Model::deleteThumbnails(FRONTEND_FILES_PATH . '/' . $this->getModule() . '/image', $this->record['image']);
                     }
 
                     // build the image name
@@ -289,30 +291,35 @@ class Edit extends ActionEdit
 
                 $content = array();
 
-                foreach($this->languages as $language)
-                {
+                foreach ($this->languages as $language) {
                     $specific['extra_id'] = $this->record['content'][$language['abbreviation']]['extra_id'];
                     $specific['team_member_id'] = $item['id'];
                     $specific['language'] = $language['abbreviation'];
-                    $specific['function'] = $this->frm->getField('function_'. $language['abbreviation'])->getValue();
-                    $specific['description'] = $this->frm->getField('description_'. $language['abbreviation'])->getValue() ? $this->frm->getField('description_'. $language['abbreviation'])->getValue() : null;
+                    $specific['function'] = $this->frm->getField('function_' . $language['abbreviation'])->getValue();
+                    $specific['description'] = $this->frm->getField('description_' . $language['abbreviation'])->getValue() ? $this->frm->getField('description_' . $language['abbreviation'])->getValue() : null;
 
-                    $specific['seo_url_overwrite'] = $this->frm->getField('seo_url_overwrite_'. $language['abbreviation'])->isChecked() ? 'Y' : 'N';
-                    $specific['seo_description_overwrite'] = $this->frm->getField('seo_description_overwrite_'. $language['abbreviation'])->isChecked() ? 'Y' : 'N';
-                    $specific['seo_title_overwrite'] = $this->frm->getField('seo_title_overwrite_'. $language['abbreviation'])->isChecked() ? 'Y' : 'N';
+                    $specific['seo_url_overwrite'] = $this->frm->getField('seo_url_overwrite_' . $language['abbreviation'])->isChecked() ? 'Y' : 'N';
+                    $specific['seo_description_overwrite'] = $this->frm->getField('seo_description_overwrite_' . $language['abbreviation'])->isChecked() ? 'Y' : 'N';
+                    $specific['seo_title_overwrite'] = $this->frm->getField('seo_title_overwrite_' . $language['abbreviation'])->isChecked() ? 'Y' : 'N';
 
                     $specific['url'] =  BackendTeamModel::getURL(CommonUri::getUrl($item['full_name']), $language['abbreviation'], $this->record['id']);
-                    if($specific['seo_url_overwrite'] == 'Y') $specific['url'] = BackendTeamModel::getURL(CommonUri::getUrl( $this->frm->getField('url_'. $language['abbreviation'])->getValue()), $language['abbreviation']);
+                    if ($specific['seo_url_overwrite'] == 'Y') {
+                        $specific['url'] = BackendTeamModel::getURL(CommonUri::getUrl($this->frm->getField('url_' . $language['abbreviation'])->getValue()), $language['abbreviation']);
+                    }
 
                     $specific['seo_description'] = $item['full_name'];
-                    if($specific['seo_description_overwrite'] == 'Y') $specific['seo_description'] = $this->frm->getField('seo_description_'. $language['abbreviation'])->getValue() ? $this->frm->getField('seo_description_'. $language['abbreviation'])->getValue() : null;
+                    if ($specific['seo_description_overwrite'] == 'Y') {
+                        $specific['seo_description'] = $this->frm->getField('seo_description_' . $language['abbreviation'])->getValue() ? $this->frm->getField('seo_description_' . $language['abbreviation'])->getValue() : null;
+                    }
 
                     $specific['seo_title'] = $item['full_name'];
-                    if($specific['seo_title_overwrite'] == 'Y') $specific['seo_title'] = $this->frm->getField('seo_title_'. $language['abbreviation'])->getValue() ? $this->frm->getField('seo_title_'. $language['abbreviation'])->getValue() : null;
+                    if ($specific['seo_title_overwrite'] == 'Y') {
+                        $specific['seo_title'] = $this->frm->getField('seo_title_' . $language['abbreviation'])->getValue() ? $this->frm->getField('seo_title_' . $language['abbreviation'])->getValue() : null;
+                    }
 
                     $content[$language['abbreviation']] = $specific;
 
-                     BackendSearchModel::saveIndex(
+                    BackendSearchModel::saveIndex(
                         $this->getModule(), $item['id'],
                         array('name' => $item['full_name'], 'description' => $specific['description']),
                         $language['abbreviation']
@@ -320,7 +327,7 @@ class Edit extends ActionEdit
                 }
 
                 BackendTeamModel::update($item);
-                BackendTeamModel::updateContent($content, $item['id'] );
+                BackendTeamModel::updateContent($content, $item['id']);
 
                 Model::triggerEvent(
                     $this->getModule(), 'after_edit', $item

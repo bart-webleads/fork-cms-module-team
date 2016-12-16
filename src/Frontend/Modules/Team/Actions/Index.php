@@ -15,6 +15,7 @@ use Frontend\Core\Engine\Model as FrontendModel;
 use Frontend\Modules\Team\Engine\Model as FrontendTeamModel;
 use Frontend\Modules\Team\Engine\Categories as FrontendTeamCategoriesModel;
 use Frontend\Core\Engine\Form as FrontendForm;
+
 /**
  * This is the overview-action
  *
@@ -63,18 +64,22 @@ class Index extends FrontendBaseBlock
         // create the form
         $this->frm = new FrontendForm('teamIndexForm', null, 'get', null, false);
         $categories = FrontendTeamCategoriesModel::getForMultiCheckbox();
-        if(!empty($categories)) $this->frm->addMultiCheckbox('categories', $categories);
+        if (!empty($categories)) {
+            $this->frm->addMultiCheckbox('categories', $categories);
+        }
         $this->frm->addCheckbox('resetFilter');
     }
 
-     private function validateForm()
+    private function validateForm()
     {
         // is the form submitted
         if ($this->frm->isSubmitted()) {
 
             // no errors
             if ($this->frm->isCorrect()) {
-                if($this->frm->getField('resetFilter')->isChecked()) $this->redirect(Navigation::getURLForBlock('Team') );
+                if ($this->frm->getField('resetFilter')->isChecked()) {
+                    $this->redirect(Navigation::getURLForBlock('Team'));
+                }
             }
         }
     }
@@ -119,7 +124,6 @@ class Index extends FrontendBaseBlock
 
         // get articles
         $this->items = FrontendTeamModel::getAll($this->pagination['limit'], $this->pagination['offset'], $this->filter);
-
     }
 
     /**
@@ -132,7 +136,7 @@ class Index extends FrontendBaseBlock
         // assign articles
         $this->tpl->assign('items', $this->items);
 
-        $this->tpl->assign('searched', !($this->filter['form'] == NULL));
+        $this->tpl->assign('searched', !($this->filter['form'] == null));
 
         // parse the pagination
         $this->parsePagination();

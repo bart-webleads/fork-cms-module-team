@@ -10,7 +10,6 @@ use Backend\Core\Engine\Model;
 use Backend\Modules\Team\Engine\Model as BackendTeamModel;
 use Backend\Modules\Team\Engine\Category as BackendTeamCategoryModel;
 
-
 /**
  * This is the index-action (default), it will display the overview of Team posts
  *
@@ -50,7 +49,7 @@ class Categories extends ActionIndex
             'name', array('class' => 'title')
         );
 
-        if($this->get('fork.settings')->get($this->getModule(), 'allow_subcategories', false) == true) {
+        if ($this->get('fork.settings')->get($this->getModule(), 'allow_subcategories', false) == true) {
             $this->dataGrid->addColumn(
                   'children', null, Language::lbl('ShowSubcategories'),
                   Model::createURLForAction('Categories') . '&amp;parent_id=[id]',

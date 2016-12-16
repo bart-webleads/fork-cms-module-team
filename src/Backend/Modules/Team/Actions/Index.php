@@ -18,7 +18,6 @@ use Backend\Modules\Team\Engine\Category as BackendTeamCategoryModel;
  */
 class Index extends ActionIndex
 {
-
     private $filter = [];
 
     /**
@@ -46,8 +45,7 @@ class Index extends ActionIndex
          FROM team AS i
          INNER JOIN team_member_content as c  on i.id = c.team_member_id';
 
-        if(isset($this->filter['categories'] ) && $this->filter['categories'] !== null && count($this->filter['categories']))
-        {
+        if (isset($this->filter['categories']) && $this->filter['categories'] !== null && count($this->filter['categories'])) {
             $query .= ' INNER JOIN team_linked_catgories AS cat ON i.id = cat.team_member_id';
         }
 
@@ -60,7 +58,7 @@ class Index extends ActionIndex
         $query .= ' AND i.status = ?';
         $parameters[] = 'active';
 
-        if($this->filter['value']){
+        if ($this->filter['value']) {
             $query .= ' AND (i.first_name LIKE ?';
             $parameters[] = '%' . $this->filter['value'] . '%';
 
@@ -71,8 +69,7 @@ class Index extends ActionIndex
             $parameters[] = '%' . $this->filter['value'] . '%';
         }
 
-        if(isset($this->filter['categories'] ) && $this->filter['categories'] !== null && count($this->filter['categories']))
-        {
+        if (isset($this->filter['categories']) && $this->filter['categories'] !== null && count($this->filter['categories'])) {
             $query .= ' AND cat.category_id IN(' . implode(',', array_values($this->filter['categories'])) . ')';
         }
 
@@ -112,8 +109,7 @@ class Index extends ActionIndex
          FROM team AS i
          INNER JOIN team_member_content as c  on i.id = c.team_member_id';
 
-        if(isset($this->filter['categories'] ) && $this->filter['categories'] !== null && count($this->filter['categories']))
-        {
+        if (isset($this->filter['categories']) && $this->filter['categories'] !== null && count($this->filter['categories'])) {
             $query .= ' INNER JOIN team_linked_catgories AS cat ON i.id = cat.team_member_id';
         }
 
@@ -128,7 +124,7 @@ class Index extends ActionIndex
 
 
 
-        if($this->filter['value']){
+        if ($this->filter['value']) {
             $query .= ' AND (i.first_name LIKE ?';
             $parameters[] = '%' . $this->filter['value'] . '%';
 
@@ -137,11 +133,9 @@ class Index extends ActionIndex
 
             $query .= ' OR i.email LIKE ?)';
             $parameters[] = '%' . $this->filter['value'] . '%';
-
         }
 
-        if(isset($this->filter['categories'] ) && $this->filter['categories'] !== null && count($this->filter['categories']))
-        {
+        if (isset($this->filter['categories']) && $this->filter['categories'] !== null && count($this->filter['categories'])) {
             $query .= ' AND cat.category_id IN(' . implode(',', array_values($this->filter['categories'])) . ')';
         }
 
@@ -184,8 +178,7 @@ class Index extends ActionIndex
 
         $this->frm->addText('value', $this->filter['value']);
 
-        if(!empty($categories) && Authentication::isAllowedAction('AddCategory'))
-        {
+        if (!empty($categories) && Authentication::isAllowedAction('AddCategory')) {
             $this->frm->addMultiCheckbox(
                 'categories',
                 $categories,
