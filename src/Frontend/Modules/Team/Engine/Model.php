@@ -124,7 +124,9 @@ class Model
     {
         $URL = (string) $URL;
         $item = (array) FrontendModel::getContainer()->get('database')->getRecord(
-           'SELECT i.id, i.image, c.name, c.url, c.description
+           'SELECT i.id, i.image, i.first_name, i.last_name, c.url, c.description,
+            c.seo_description, c.seo_title, c.seo_description_overwrite, c.seo_title_overwrite, c.function,
+            i.email, i.linkedin_url, i.instagram_site_name, i.facebook_site_name, i.twitter_site_name, i.pinterest_site_name, i.phone
             FROM team AS i
             JOIN team_member_content AS c on c.team_member_id = i.id
             WHERE c.url = ? AND c.language = ?',
